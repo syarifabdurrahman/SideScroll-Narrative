@@ -9,6 +9,8 @@ public class PlayerMovementController : MonoBehaviour
     #region Component Settings
     public Rigidbody2D RB { get; private set; }
     public PlayerAnimator AnimHandler { get; private set; }
+
+    public GameObject emotesCanvas;
     #endregion
 
     #region State Setting
@@ -65,6 +67,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
+        emotesCanvas.SetActive(false);
         SetGravityScale(Data.gravityScale);
         IsFacingRight = true;
     }
