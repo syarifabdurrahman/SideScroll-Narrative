@@ -6,13 +6,13 @@ public class MoveBackground : MonoBehaviour
 {
     private float length;
     private float startPos;
-    private GameObject cam;
+    [SerializeField]private GameObject cam;
 
     [SerializeField] private float parallaxEffectSpeed;
 
-    private void Awake()
+    private void Start()
     {
-        cam = GameObject.Find("CM vcam1");
+        cam = GameObject.Find("CM vcam");
         startPos = transform.position.x;
         length = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
     }
@@ -20,10 +20,10 @@ public class MoveBackground : MonoBehaviour
     private void Update()
     {
         float temp = (cam.transform.position.x * (1 - parallaxEffectSpeed));
-        float distance = (cam.transform.position.x - parallaxEffectSpeed);
+        float distance = (cam.transform.position.x * parallaxEffectSpeed);
         transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
 
-        if (temp > startPos + length)
+        if (temp >= startPos + length)
         {
             startPos += length;
         }
