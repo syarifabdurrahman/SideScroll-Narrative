@@ -8,7 +8,7 @@ public class PlayerAnimator : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRend;
 
-   [SerializeField] private Color foregroundColor;
+    [SerializeField] private Color foregroundColor;
 
 
     [Header("Particle FX")]
@@ -36,7 +36,7 @@ public class PlayerAnimator : MonoBehaviour
     private void LateUpdate()
     {
 
-        //CheckAnimationState();
+        CheckAnimationState();
 
         ParticleSystem.MainModule jumpPSettings = _jumpParticle.main;
         jumpPSettings.startColor = new ParticleSystem.MinMaxGradient(foregroundColor);
@@ -63,5 +63,14 @@ public class PlayerAnimator : MonoBehaviour
             justLanded = false;
             return;
         }
+
+        if (dashing)
+        {
+            anim.SetTrigger("Dash");
+            dashing = false;
+            return;
+        }
+
+        anim.SetBool("run", run);
     }
 }

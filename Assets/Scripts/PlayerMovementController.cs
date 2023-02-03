@@ -88,7 +88,16 @@ public class PlayerMovementController : MonoBehaviour
         _moveInput.y = Input.GetAxisRaw("Vertical");
 
         if (_moveInput.x != 0)
+        {
+            Debug.Log("Horizontal X: " + _moveInput.x);
+
+            AnimHandler.run = true;
             CheckDirectionToFace(_moveInput.x > 0);
+        }
+        else
+        {
+            AnimHandler.run = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
@@ -102,6 +111,8 @@ public class PlayerMovementController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.K))
         {
+            AnimHandler.dashing = true;
+
             OnDashInput();
         }
         #endregion
