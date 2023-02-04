@@ -20,6 +20,4 @@ public class ItemController : MonoBehaviour
     {
         item = newItem;
     }
-
-
 }

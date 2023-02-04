@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1356765608925138340}
   - component: {fileID: 1356765608925138341}
   - component: {fileID: 4852486840838651764}
-  - component: {fileID: 989987541465270934}
+  - component: {fileID: -3966456754491667356}
   m_Layer: 0
-  m_Name: Sword_1 Item
+  m_Name: Sword Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 16
-  m_Sprite: {fileID: 21300168, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 21300166, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.125, y: 0.28125}
+    oldSize: {x: 1.09375, y: 0.25}
     newSize: {x: 1.09375, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.09375, y: 0.5139941}
   m_EdgeRadius: 0
---- !u!114 &989987541465270934
+--- !u!114 &-3966456754491667356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018c63a7797458241ab0bbbf91dc4146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 1e1b00daa1835b14ba9db01c048d424a, type: 2}
+  item: {fileID: 11400000, guid: 4e2972e4939031649adf50f74a5968f9, type: 2}

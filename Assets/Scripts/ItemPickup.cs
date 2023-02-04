@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    private PlayerMovementController player;
     public ItemData item;
     public bool isCollide { set; private get; }
+    private PlayerMovementController player;
 
     private void pickup()
     {

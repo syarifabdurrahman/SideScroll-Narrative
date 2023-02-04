@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
 
     public void add(ItemData item)
     {
-        if (itemCount <= itemLimit)
+        if (itemCount < itemLimit)
         {
             itemCount++;
 
