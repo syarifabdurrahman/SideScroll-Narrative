@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 316900996718226914}
   - component: {fileID: 7179307227754056555}
   - component: {fileID: 7156992436816869751}
+  - component: {fileID: -64432406623756422}
   m_Layer: 0
   m_Name: Apple Item
   m_TagString: Untagged
@@ -112,3 +113,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6414ac3ad2647a458de5dc8f5d119c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d7e4f0e9e15f55145b3eba62fa5ae28e, type: 2}
+--- !u!114 &-64432406623756422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316900996718226915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018c63a7797458241ab0bbbf91dc4146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d7e4f0e9e15f55145b3eba62fa5ae28e, type: 2}

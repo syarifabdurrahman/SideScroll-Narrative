@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    public static PlayerMovementController instance;
+
     public PlayerData Data;
 
     #region Component Settings
@@ -49,6 +51,7 @@ public class PlayerMovementController : MonoBehaviour
     public float minX;
     public float maxX;
 
+    public bool canMove;
     [SerializeField] private Transform _groundCheckPoint;
     [SerializeField] private Vector2 _groundCheckSize = new Vector2(0.49f, 0.03f);
     [Space(5)]
@@ -61,8 +64,11 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         RB = GetComponent<Rigidbody2D>();
         AnimHandler = GetComponent<PlayerAnimator>();
+        canMove = true;
     }
 
     private void Start()
@@ -90,14 +96,14 @@ public class PlayerMovementController : MonoBehaviour
         _moveInput.x = Input.GetAxisRaw("Horizontal");
         _moveInput.y = Input.GetAxisRaw("Vertical");
 
-        if (_moveInput.x != 0)
+        if (_moveInput.x != 0 && canMove)
         {
             Debug.Log("Horizontal X: " + _moveInput.x);
 
             AnimHandler.run = true;
             CheckDirectionToFace(_moveInput.x > 0);
         }
-        else
+        else if (_moveInput.x == 0)
         {
             AnimHandler.run = false;
         }
@@ -321,6 +327,11 @@ public class PlayerMovementController : MonoBehaviour
     #region RUN METHODS
     private void Run(float lerpAmount)
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         //Calculate the direction we want to move in and our desired velocity
         float targetSpeed = _moveInput.x * Data.runMaxSpeed;
         //We can reduce are control using Lerp() this smooths changes to are direction and speed
@@ -364,17 +375,11 @@ public class PlayerMovementController : MonoBehaviour
 
         //Convert this to a vector and apply to rigidbody
         RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
-
-        /*
-		 * For those interested here is what AddForce() will do
-		 * RB.velocity = new Vector2(RB.velocity.x + (Time.fixedDeltaTime  * speedDif * accelRate) / RB.mass, RB.velocity.y);
-		 * Time.fixedDeltaTime is by default in Unity 0.02 seconds equal to 50 FixedUpdate() calls per second
-		*/
     }
 
     private void Turn()
     {
-        //stores scale and flips the player along the x axis, 
+        //Flipping effect
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
