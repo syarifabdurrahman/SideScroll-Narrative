@@ -380,6 +380,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items: []
+  itemCount: 0
+  itemLimit: 20
+  inventoryItems: []
   inventoryPanel: {fileID: 693242100}
   inventoryFeedback: {fileID: 2075086496}
   inventoryFeedbackText: {fileID: 1782714600}
@@ -868,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 30
+    m_Left: 40
     m_Right: 0
     m_Top: 30
     m_Bottom: 0
@@ -2362,7 +2365,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pumpkin Item
       objectReference: {fileID: 0}
-    - target: {fileID: 7156992436816869751, guid: e582ac3ab26f57b4c914c4c2c09ce093, type: 3}
+    - target: {fileID: 0}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 63031d7ec339aca49b03eed60cf120b1, type: 2}
@@ -3912,8 +3915,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: -32}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: -17, y: -42}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1387975839
 MonoBehaviour:
@@ -4055,7 +4058,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apple Item
       objectReference: {fileID: 0}
-    - target: {fileID: 7156992436816869751, guid: 79018ea3e7f6261438392e5cb8b4aeaa, type: 3}
+    - target: {fileID: 0}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: d7e4f0e9e15f55145b3eba62fa5ae28e, type: 2}
@@ -4121,7 +4124,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_1 Item
       objectReference: {fileID: 0}
-    - target: {fileID: 2808132790099022959, guid: fa9a72e3efd378a4e86a9bbb838f67cc, type: 3}
+    - target: {fileID: 0}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 1e1b00daa1835b14ba9db01c048d424a, type: 2}
@@ -10312,7 +10315,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword Item
       objectReference: {fileID: 0}
-    - target: {fileID: 2808132790099022959, guid: c4972c65ccb18034ebcf42db2e521b58, type: 3}
+    - target: {fileID: 0}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 4e2972e4939031649adf50f74a5968f9, type: 2}

@@ -8,6 +8,10 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
     public List<ItemData> Items = new List<ItemData>();
+    public int itemCount;
+    public int itemLimit = 20;
+
+    public ItemController[] inventoryItems;
 
     [Header("UI")]
     [SerializeField] private GameObject inventoryPanel;
@@ -28,7 +32,17 @@ public class InventoryManager : MonoBehaviour
 
     public void add(ItemData item)
     {
-        Items.Add(item);
+        if (itemCount <= itemLimit)
+        {
+            itemCount++;
+
+            Items.Add(item);
+        }
+        else
+        {
+            Debug.Log(" inventory has reached limit, it's 20 max");
+        }
+
     }
 
     public void remove(ItemData item)
@@ -39,7 +53,7 @@ public class InventoryManager : MonoBehaviour
     public void ListItems()
     {
         // Cleaning before add
-        foreach(Transform item in itemContent)
+        foreach (Transform item in itemContent)
         {
             Destroy(item.gameObject);
         }
@@ -47,16 +61,31 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in Items)
         {
             GameObject go = Instantiate(pf_InventoryItem, itemContent);
-            
+
             var itemName = go.transform.Find("Item Name").GetComponent<TextMeshProUGUI>();
             var itemIcon = go.transform.Find("Item Icon").GetComponent<Image>();
+            var removeButton=go.transform.Find("Remove Btn").GetComponent<Button>();
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             itemIcon.preserveAspect = true;
+
+            removeButton.gameObject.SetActive(true);
         }
+
+        SetInventoryItems();
     }
 
+
+    public void SetInventoryItems()
+    {
+        inventoryItems = itemContent.GetComponentsInChildren<ItemController>();
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            inventoryItems[i].Additem(Items[i]);
+        }
+    }
 
     #region UI Settings
 
@@ -80,7 +109,7 @@ public class InventoryManager : MonoBehaviour
         PlayerMovementController.instance.canMove = !isActivated;
     }
 
-    public void UpdateUIFeedback(string itemName,Sprite itemIcon)
+    public void UpdateUIFeedback(string itemName, Sprite itemIcon)
     {
         inventoryFeedbackText.text = $"You obtained \"{itemName}\"";
         inventoryIconFeedbackImage.sprite = itemIcon;
