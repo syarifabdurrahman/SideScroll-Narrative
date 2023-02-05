@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fea67ae030cc648b424a6d775c0ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPropsData: {fileID: 11400000, guid: 84f909e72a6a7d0478b62ad58a92dd5d, type: 2}
+  interactPropsData: {fileID: 11400000, guid: a3e438b2820470343879dd038c8cc06a, type: 2}
   isChest: 1
   pf_itemInventory:
   - {fileID: 316900996718226915, guid: 79018ea3e7f6261438392e5cb8b4aeaa, type: 3}
