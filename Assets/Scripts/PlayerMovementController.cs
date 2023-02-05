@@ -108,7 +108,7 @@ public class PlayerMovementController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
-            if(DialogueManager.GetInstance().dialogueIsPlaying)
+            if (DialogueManager.GetInstance().dialogueIsPlaying)
             {
                 return;
             }
@@ -210,7 +210,7 @@ public class PlayerMovementController : MonoBehaviour
         #endregion
 
         #region Dash Check
-        if (CanDash() && LastPressedDashTime > 0)
+        if (CanDash() && LastPressedDashTime > 0 && canMove)
         {
             //Freeze game for split second. Adds juiciness and a bit of forgiveness over directional input
             Sleep(Data.dashSleepTime);

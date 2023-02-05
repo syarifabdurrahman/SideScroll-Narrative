@@ -5,6 +5,15 @@ using UnityEngine;
 using Ink.Runtime;
 using System;
 using UnityEngine.EventSystems;
+using UnityEditor;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class PortraitImage
+{
+    public string name;
+    public Sprite imageSprite;
+}
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,10 +22,21 @@ public class DialogueManager : MonoBehaviour
     [Header("DialogueUI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI displayNameText;
+    [SerializeField] private Image displayImage;
+
+    public List<PortraitImage> portraitImages;
 
     private Story currentStory;
 
     public bool dialogueIsPlaying { get; private set; }
+
+    private List<Choice> currentChoice;
+
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
+
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -61,7 +81,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ContinueStory();
         }
@@ -69,6 +89,8 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJson)
     {
+        Cursor.visible = false;
+
         currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
 
@@ -86,6 +108,8 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
 
         PlayerMovementController.instance.canMove = true;
+
+        Cursor.visible = true;
     }
 
     private void ContinueStory()
@@ -95,7 +119,11 @@ public class DialogueManager : MonoBehaviour
             PlayerMovementController.instance.canMove = false;
             dialogueText.text = currentStory.Continue();
 
+            // Displaying choices if any
             DisplayChoices();
+
+            //Handle Tags
+            HandleTags(currentStory.currentTags);
         }
         else
         {
@@ -103,9 +131,47 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach (string tag in currentTags)
+        {
+            // parse
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError("Tag cant be parsed :" + tag);
+            }
+
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    displayNameText.text = tagValue;
+                    break;
+                case PORTRAIT_TAG:
+                    foreach (var portrait in portraitImages)
+                    {
+                        if (portrait.name == tagValue)
+                        {
+                            displayImage.sprite = portrait.imageSprite;
+                        }
+                    }
+                    break;
+                case LAYOUT_TAG:
+                    Debug.Log("layout = " + tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("Tag came in but not currently handled:" + tag);
+                    break;
+            }
+        }
+    }
+
     private void DisplayChoices()
     {
-        List<Choice> currentChoice = currentStory.currentChoices;
+        currentChoice = currentStory.currentChoices;
 
         if (currentChoice.Count > choices.Length)
         {
@@ -126,21 +192,18 @@ public class DialogueManager : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
-
+        StartCoroutine(SelectChoice(0));
     }
 
-    private IEnumerator SelectFirstChoice()
+    private IEnumerator SelectChoice(int index)
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(choices[index].gameObject);
     }
 
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
-
-        //ContinueStory();
     }
 }
