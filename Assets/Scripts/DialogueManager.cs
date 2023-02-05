@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             ContinueStory();
         }
@@ -141,6 +141,6 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
 
-        ContinueStory();
+        //ContinueStory();
     }
 }
