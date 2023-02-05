@@ -108,6 +108,11 @@ public class PlayerMovementController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.J))
         {
+            if(DialogueManager.GetInstance().dialogueIsPlaying)
+            {
+                return;
+            }
+
             OnJumpInput();
         }
 
