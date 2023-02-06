@@ -56,8 +56,11 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else
+        {
+            Instance = this;
+        }
 
-        Instance = this;
     }
 
     public static DialogueManager GetInstance()
@@ -89,7 +92,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (/*canContinueNextLine && currentStory.currentChoices.Count == 0 &&*/ Input.GetKeyDown(KeyCode.Space))
+        if (canContinueNextLine && Input.GetKeyDown(KeyCode.Space))
         {
             ContinueStory();
         }
