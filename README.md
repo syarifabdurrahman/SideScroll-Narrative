@@ -1,8 +1,9 @@
 ## Controll
-A - D -> for Walk
-SPACE -> jump, continue dialogue
-E -> interact with object
-Shift -> Dash
+- A - D -> for Walk
+- SPACE -> jump, continue dialogue
+- E -> interact with object
+- Shift -> Dash
+- Click to continue ( sometimes )
 
 ## Preview
 
