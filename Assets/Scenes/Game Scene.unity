@@ -5574,10 +5574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e795155875fa19c46b11514b316faf61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typingSpeed: 0
   dialoguePanel: {fileID: 905770149}
   dialogueText: {fileID: 555699450}
   displayNameText: {fileID: 1316942121}
   displayImage: {fileID: 1089902503}
+  continueIcon: {fileID: 1647273202}
   portraitImages:
   - name: NPC_GIRL_1
     imageSprite: {fileID: 21300000, guid: 089f5cf78eb560a4c98f429c2be4e3c0, type: 3}
@@ -5585,6 +5587,8 @@ MonoBehaviour:
     imageSprite: {fileID: 21300000, guid: 5c671c1b16fafcf4bab1d39987523bf4, type: 3}
   - name: NPC_MAN
     imageSprite: {fileID: 21300000, guid: edddd973f6c9a2944a307704b8322204, type: 3}
+  - name: Player
+    imageSprite: {fileID: 21300000, guid: 76b58fc9681bfb7429b167c0927158cb, type: 3}
   choices:
   - {fileID: 1030388443}
   - {fileID: 377776584}

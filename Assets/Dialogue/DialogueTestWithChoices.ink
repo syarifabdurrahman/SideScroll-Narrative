@@ -4,7 +4,8 @@ Hello there! #speaker:Marlyn #portrait:NPC_GIRL_2 #layout:right
 === main ===
 Did you hear about the legend of dragon?
 + [Yeah, i hear it!]
-     For me its so scary though, look you must be careful out there when you saw one!
+    .........
+    For me its so scary though, look you must be careful out there when you saw one!
 + [Nope, I didn't hear it!]
     Let me tell you, there is some legend dragon out there thats look scary, so you must be careful until you saw one!
 + [Not interested!]
