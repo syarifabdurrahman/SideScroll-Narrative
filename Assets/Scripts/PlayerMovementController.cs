@@ -1,10 +1,14 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovementController : MonoBehaviour
 {
     public static PlayerMovementController instance;
+
+    public CinemachineVirtualCamera virtualCamera;
 
     public PlayerData Data;
 
@@ -61,14 +65,34 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
+    public string areaTransitionName;
+
 
     private void Awake()
     {
-        instance = this;
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+        PlayerInit();
 
         RB = GetComponent<Rigidbody2D>();
         AnimHandler = GetComponent<PlayerAnimator>();
         canMove = true;
+    }
+
+    public void PlayerInit()
+    {
+        virtualCamera = GameObject.Find("CM vcam").GetComponent<CinemachineVirtualCamera>();
+        virtualCamera.Follow = gameObject.transform;
+        virtualCamera.LookAt = gameObject.transform;
     }
 
     private void Start()

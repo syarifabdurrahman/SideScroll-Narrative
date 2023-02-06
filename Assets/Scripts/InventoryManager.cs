@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class InventoryManager : MonoBehaviour
 
             var itemName = go.transform.Find("Item Name").GetComponent<TextMeshProUGUI>();
             var itemIcon = go.transform.Find("Item Icon").GetComponent<Image>();
-            var removeButton=go.transform.Find("Remove Btn").GetComponent<Button>();
+            var removeButton = go.transform.Find("Remove Btn").GetComponent<Button>();
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
@@ -98,6 +99,8 @@ public class InventoryManager : MonoBehaviour
 
     public void CloseInventory()
     {
+        inventoryItems = Array.Empty<ItemController>();
+
         inventoryPanel.SetActive(false);
 
         PlayerMovementController.instance.canMove = true;

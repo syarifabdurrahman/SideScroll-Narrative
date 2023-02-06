@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager Instance;
 
     [Header("Text Effect Settings")]
-    [SerializeField] private float typingSpeed = .4f;
+    [SerializeField] private float typingSpeed = .04f;
     private Coroutine displayLineCoroutine;
 
     [Header("DialogueUI")]
@@ -154,7 +154,6 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char letter in line.ToCharArray())
         {
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 dialogueText.text = line;
