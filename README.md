@@ -7,6 +7,7 @@
 
 ## Preview
 
+![video](https://youtu.be/7bjifx9u3xE)
 ![image](https://user-images.githubusercontent.com/45060322/217014309-922186ca-5d74-43d3-b40d-b76ebcb04043.png)
 ![image](https://user-images.githubusercontent.com/45060322/217014389-f964a5a6-2204-489c-bb31-9514314b6404.png)
 ![image](https://user-images.githubusercontent.com/45060322/217014449-5a0ddf8b-eeed-42fb-9321-5bb3ffedb407.png)
