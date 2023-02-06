@@ -26,7 +26,15 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
 
         inventoryFeedback.SetActive(false);
     }
@@ -48,12 +56,16 @@ public class InventoryManager : MonoBehaviour
 
     public void remove(ItemData item)
     {
-        Items.Remove(item);
+
+        if (itemCount >= 0)
+        {
+            itemCount--;
+            Items.Remove(item);
+        }
     }
 
     public void ListItems()
     {
-        // Cleaning before add
         foreach (Transform item in itemContent)
         {
             Destroy(item.gameObject);
@@ -67,11 +79,14 @@ public class InventoryManager : MonoBehaviour
             var itemIcon = go.transform.Find("Item Icon").GetComponent<Image>();
             var removeButton = go.transform.Find("Remove Btn").GetComponent<Button>();
 
+            go.GetComponent<ItemController>().item = item;
+
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             itemIcon.preserveAspect = true;
 
             removeButton.gameObject.SetActive(true);
+
         }
 
         SetInventoryItems();
@@ -99,9 +114,12 @@ public class InventoryManager : MonoBehaviour
 
     public void CloseInventory()
     {
-        inventoryItems = Array.Empty<ItemController>();
-
         inventoryPanel.SetActive(false);
+
+        foreach (Transform item in itemContent)
+        {
+            Destroy(item.gameObject);
+        }
 
         PlayerMovementController.instance.canMove = true;
     }

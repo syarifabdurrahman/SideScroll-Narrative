@@ -13,7 +13,14 @@ public class InteractPropsManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void OpenInteractPanel(bool isOpen)
