@@ -207,7 +207,7 @@ public class PlayerMovementController : MonoBehaviour
         if (!IsDashing)
         {
             //Jump
-            if (CanJump() && LastPressedJumpTime > 0)
+            if (CanJump() && LastPressedJumpTime > 0 && canMove)
             {
                 IsJumping = true;
                 IsWallJumping = false;

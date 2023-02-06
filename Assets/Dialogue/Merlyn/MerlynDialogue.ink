@@ -2,7 +2,7 @@ Hello there! #speaker:Marlyn #portrait:NPC_GIRL_2 #layout:right
 -> main
 
 === main ===
-Did you hear about the legend of dragon?
+Did you hear about the legend of dragons?
 + [Yeah, i hear it!]
     .........
     For me its so scary though, look you must be careful out there when you saw one!

@@ -9943,7 +9943,7 @@ PrefabInstance:
     - target: {fileID: -224587360378716647, guid: fb1d7268caeff3f4291ec4e4ee834107, type: 3}
       propertyPath: inkJson
       value: 
-      objectReference: {fileID: 4900000, guid: f0c30efb7b830204d8cf626e3a8ebd3a, type: 3}
+      objectReference: {fileID: 4900000, guid: 409ee904ddf9b5845bf6bd1876373117, type: 3}
     - target: {fileID: 7074116887958639368, guid: fb1d7268caeff3f4291ec4e4ee834107, type: 3}
       propertyPath: m_Name
       value: NPC_MAN
